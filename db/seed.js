@@ -5,6 +5,8 @@ const prisma = new PrismaClient()
 async function main() {
     console.log("Seeding database...")
 
+    //CREATING DEVELOPERS
+    console.log("Creating developers...")
     const Ubisoft = await prisma.developer.create({
         data: {
             name: "Ubisoft",
@@ -19,7 +21,9 @@ async function main() {
         }
     });
 
-    await prisma.game.create({
+    //CREATING GAMES
+    console.log("Creating games...")
+    const ACOd = await prisma.game.create({
         data: {
             title: "Assassin's Creed Odyssey",
             developer_id: Ubisoft.id,
@@ -31,7 +35,7 @@ async function main() {
         }
     });
 
-    await prisma.game.create({
+    const UFC4 = await prisma.game.create({
         data: {
             title: "EA Sports UFC 4",
             developer_id: EA.id,
@@ -43,7 +47,7 @@ async function main() {
         }
     });
 
-    await prisma.game.create({
+    const ACOr = await prisma.game.create({
         data: {
             title: "Assassin's Creed Origins",
             developer_id: Ubisoft.id,
@@ -52,6 +56,40 @@ async function main() {
             year: "2017",
             platform: "Microsoft Windows, PS4, and Xbox One",
             trailer: "https://www.youtube.com/watch?v=cUuKIpCM2o0",
+        }
+    });
+
+    //CREATING USERS
+    console.log("Creating users...")
+    const trent = await prisma.user.create({
+        data: {
+            firstName: "Trent",
+            lastName: "Carpenter",
+            username: "tcar7699",
+            password: "Tiger4062",
+            email: "tcarpenter7699@gmail.com"
+        }
+    });
+
+    //CREATING REVIEWS
+    console.log("Creating reviews...")
+    await prisma.review.create({
+        data: {
+            title: "One of my favs in the series!",
+            content: "Love this game. Spent so much time just exploring and the only game in the series I made an effort to 100% complete.",
+            rating: 5,
+            user_id: trent.id,
+            game_id: ACOr.id,
+        }
+    });
+
+    await prisma.review.create({
+        data: {
+            title: "So much fun!",
+            content: "Absolutely love this game. So much fun to play as your favorite fighters and play against friends.",
+            rating: 5,
+            user_id: trent.id,
+            game_id: UFC4.id,
         }
     });
   }
