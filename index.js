@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
-const port = 7699
+const port = process.env.PORT || 7699;
 
 app.get('/', (req, res) => {
   res.send('Hello World!')

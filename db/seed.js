@@ -1,6 +1,8 @@
 const { PrismaClient } = require('@prisma/client')
 
 const prisma = new PrismaClient()
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 async function main() {
     console.log("Seeding database...")
@@ -61,15 +63,21 @@ async function main() {
 
     //CREATING USERS
     console.log("Creating users...")
-    const trent = await prisma.user.create({
+    let trent = undefined;
+    try{
+    trent = await prisma.user.create({
         data: {
             firstName: "Trent",
             lastName: "Carpenter",
             username: "tcar7699",
-            password: "Tiger4062",
+            password: await bcrypt.hash("Tiger4062", saltRounds), 
             email: "tcarpenter7699@gmail.com"
         }
     });
+    }catch(err) {
+    throw err;
+    }
+   
 
     //CREATING REVIEWS
     console.log("Creating reviews...")
