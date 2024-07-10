@@ -22,11 +22,10 @@ model Game {
   trailer      String?
   developer_id Int
   developer    Developer @relation(fields: [developer_id], references: [id])
-  created_at   DateTime @default(now())
+  platform     String
+  created_at   DateTime  @default(now())
+  reviews      Review[]
 }
-
-//   platform     Platform @relation(fields: [platform_id], references: [id])
-//     reviews  Review[]
 
 model Developer {
   id       Int     @id @default(autoincrement())
@@ -35,50 +34,23 @@ model Developer {
   games    Game[]
 }
 
-// model Platform {
-//   id       Int      @id @default(autoincrement())
-//   size     String
-//   firmness String?
-//   type     String
-//   price    Decimal
-//   name     String
-//   brand_id Int
-//   brand    Brand    @relation(fields: [brand_id], references: [id])
-//   reviews  Review[]
-// }
+model Review {
+  id      Int    @id @default(autoincrement())
+  title   String
+  content String
+  rating  Int
+  user_id Int
+  user    User   @relation(fields: [user_id], references: [id])
+  game_id Int
+  game    Game   @relation(fields: [game_id], references: [id])
+}
 
-// model Mattress {
-//   id       Int      @id @default(autoincrement())
-//   size     String
-//   firmness String?
-//   type     String
-//   price    Decimal
-//   name     String
-//   brand_id Int
-//   brand    Brand    @relation(fields: [brand_id], references: [id])
-//   reviews  Review[]
-// }
-
-// model User {
-//   id       Int      @id @default(autoincrement())
-//   size     String
-//   firmness String?
-//   type     String
-//   price    Decimal
-//   name     String
-//   brand_id Int
-//   brand    Brand    @relation(fields: [brand_id], references: [id])
-//   reviews  Review[]
-// }
-
-// // model Mattress {
-// //   id       Int      @id @default(autoincrement())
-// //   size     String
-// //   firmness String?
-// //   type     String
-// //   price    Decimal
-// //   name     String
-// //   brand_id Int
-// //   brand    Brand    @relation(fields: [brand_id], references: [id])
-// //   reviews  Review[]
-// // }
+model User {
+  id        Int      @id @default(autoincrement())
+  firstName String
+  lastName  String
+  username  String   @unique
+  password  String
+  email     String
+  reviews   Review[]
+}

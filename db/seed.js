@@ -26,6 +26,7 @@ async function main() {
             cover: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzmgNuTz4S-RKG8_UDrR8YlK370g6oOi59iw&s",
             category: "RPG",
             year: "2018",
+            platform: "Microsoft Windows, PS4, and Xbox One",
             trailer: "https://www.youtube.com/watch?v=s_SJZSAtLBA",
         }
     });
@@ -37,6 +38,7 @@ async function main() {
             cover: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEIcvFq_Hbr9RUovZJfjMO62LVfsb_Ni9omw&s",
             category: "Sports",
             year: "2020",
+            platform: "PS4 and Xbox One",
             trailer: "https://www.youtube.com/watch?v=GjugTk9ovcI",
         }
     });
@@ -48,6 +50,7 @@ async function main() {
             cover: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGFGBAV9haQClm48vNMBkCfetOQphAiuRKSg&s",
             category: "RPG",
             year: "2017",
+            platform: "Microsoft Windows, PS4, and Xbox One",
             trailer: "https://www.youtube.com/watch?v=cUuKIpCM2o0",
         }
     });
