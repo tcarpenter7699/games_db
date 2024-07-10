@@ -40,6 +40,17 @@ async function main() {
             trailer: "https://www.youtube.com/watch?v=GjugTk9ovcI",
         }
     });
+
+    await prisma.game.create({
+        data: {
+            title: "Assassin's Creed Origins",
+            developer_id: Ubisoft.id,
+            cover: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGFGBAV9haQClm48vNMBkCfetOQphAiuRKSg&s",
+            category: "RPG",
+            year: "2017",
+            trailer: "https://www.youtube.com/watch?v=cUuKIpCM2o0",
+        }
+    });
   }
   
   main()
