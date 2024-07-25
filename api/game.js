@@ -29,7 +29,11 @@ gameRouter.get('/:id', async (req, res) => {
             developer: true,
         }
     });
-    res.send(game);
+    if(game){
+        res.send(game);
+    } else {
+        res.sendStatus(404);
+    }
     } catch(err){
     console.log(err);
     res.sendStatus(500)
@@ -40,14 +44,54 @@ gameRouter.get('/:id', async (req, res) => {
 gameRouter.post("/", async (req, res) => {
     try{
     const newGame = await prisma.game.create({
-        data:{
-            //GET DATA FROM BODY
-        }
+        data: req.body
     });
+    res.send(newGame);
     }catch(err){
     console.log(err);
     res.sendStatus(500)
     }
 })
+
+// DELETE /api/game/:id
+gameRouter.delete("/:id", async (req, res) => {
+    try{
+    const deletedGame = await prisma.game.delete({
+        where: {
+            id: parseInt(req.params.id)
+        }
+    });
+    if(deletedGame){
+        res.send(deletedGame);
+    }
+    else{
+        res.sendStatus(404);
+    }
+    }catch(err){
+    console.log(err);
+    res.sendStatus(500)
+    }
+});
+
+// PUT /api/game
+gameRouter.put("/:id", async (req, res) => {
+    try{
+    const updatedGame = await prisma.game.update({
+        where:{
+            id: parseInt(req.params.id)
+        },
+        data: req.body,
+    })
+    if(deletedGame){
+        res.send(updatedGameGame);
+    }
+    else{
+        res.sendStatus(404);
+    }
+    }catch(err){
+    console.log(err);
+    res.sendStatus(500)
+    }
+});
 
 module.exports = gameRouter;
