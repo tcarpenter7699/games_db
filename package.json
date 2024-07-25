@@ -15,15 +15,16 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "nodemon": "^3.1.4",
-    "prisma": "^5.16.2",
-    "concurrently": "^8.2.2"
+    "prisma": "^5.17.0"
   },
   "dependencies": {
     "@prisma/client": "^5.16.2",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
     "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0"
   }
 }
